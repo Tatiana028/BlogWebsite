@@ -1,2 +1,17 @@
-package com.example.blogwebsite.controller;public class MainController {
-}
+package com.example.blogwebsite.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+    @Controller
+    public class MainController {
+
+        @GetMapping("/")
+        public String home(Model model) {
+            model.addAttribute("title", "Main");
+            return "home";
+        }
+
+    }
+

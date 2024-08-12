@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100" data-bs-theme="light" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
+
+    <title>Add recipe</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styleAddRecipe.css">
+
+    <div th:insert="blocks/style.html :: style"></div>
+
+    <link href="cover.css" rel="stylesheet">
+
 </head>
 <body>
-$END$
+
+<div th:insert="blocks/body-background.html :: body"></div>
+
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <div th:insert="blocks/header.html :: header"></div>
+
+
+    <div class="container mt-5 mb-5 bg-light rounded-4 p-4 text-dark text-center">
+        <h1 class="mb-4" style=" font-family: 'Baskerville'; letter-spacing: -1px;">Add Recipe</h1>
+        <form action="/add-recipe" method="post">
+            <div class="mb-4">
+                <label for="url" class="form-label d-block text-start fw-light ms-3">URL of the Image:</label>
+                <input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*"
+                       class="form-control" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="title" class="form-label d-block text-start fw-light ms-3">Title of the Recipe:</label>
+                <input type="text" name="title" id="title" placeholder="Title" class="form-control" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="cookTime" class="form-label d-block text-start fw-light ms-3">Cooking Time:</label>
+                <input type="number" name="cookTime" id="cookTime" placeholder="time in minutes" class="form-control"
+                       required>
+            </div>
+
+            <div class="mb-4">
+                <label for="ingredients" class="form-label d-block text-start fw-light ms-3">Ingredients:</label>
+                <textarea name="ingredients" id="ingredients" placeholder="ingredients comma-separated"
+                          class="form-control" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="text" class="form-label d-block text-start fw-light ms-3">Instructions:</label>
+                <textarea name="text" id="text" placeholder="Type recipe" class="form-control" rows="5"
+                          required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg mt-3">Add Recipe</button>
+        </form>
+
+
+    </div>
+
+
+    <div th:insert="blocks/footer.html :: footer"></div>
+
+</div>
+
 </body>
 </html>

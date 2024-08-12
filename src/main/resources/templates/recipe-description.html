@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100" data-bs-theme="light" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
+
+    <title>Add recipe</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <div th:insert="blocks/style.html :: style"></div>
+
+    <link href="cover.css" rel="stylesheet">
+
 </head>
 <body>
-$END$
+
+<div th:insert="blocks/body-background.html :: body"></div>
+
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <div th:insert="blocks/header.html :: header"></div>
+
+    <div style="background-color: rgba(0, 0, 0, 0.5); color: white; padding: 20px; border-radius: 10px; display: flex; align-items: center; position: relative;">
+
+
+        <div style="border: 1px solid transparent; border-radius: 5%; width: 300px; height: 450px; overflow: hidden;">
+            <img style="object-fit: cover; width: 100%; height: 100%;" th:src="${recipe.url}">
+        </div>
+
+
+        <div style="flex: 1; margin-left: 20px;">
+            <h2 th:text="${recipe.title}"></h2>
+
+            <div class="border rounded p-3" style="width: 100%;">
+                <dl class="row">
+                    <dt class="col-sm-3">Cook Time:</dt>
+                    <dd class="col-sm-9">
+                        <span class="fw-bold">40</span> mins
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: rgba(0, 0, 0, 0.5); color: white; padding: 20px; border-radius: 10px; display: flex; align-items: center; position: relative; margin-top: 20px;">
+
+        <div style="flex: 1; margin-left: 20px;">
+            <h2 class="wprm-recipe-name wprm-block-text-bold">Ingredients</h2>
+
+            <ul>
+                <li th:each="ingredient : ${#strings.listSplit(recipe.ingredients, ',')}" th:text="${ingredient}"></li>
+            </ul>
+
+        </div>
+
+
+        <div style="flex: 1; margin-left: 20px;">
+            <h2 class="wprm-recipe-name wprm-block-text-bold">Directions</h2>
+            <div th:text="${recipe.text}"></div>
+        </div>
+
+    </div>
+
+
+    <div th:insert="blocks/footer.html :: footer"></div>
+
+</div>
+
 </body>
 </html>
+
+
+

@@ -3,13 +3,13 @@ package com.example.blogwebsite.models;
 import jakarta.persistence.*;
 
 @Entity
-public class SignUp {
+public class User {
 
 
-    public SignUp() {
+    public User() {
     }
 
-    public SignUp(String name, String email, String password) {
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
